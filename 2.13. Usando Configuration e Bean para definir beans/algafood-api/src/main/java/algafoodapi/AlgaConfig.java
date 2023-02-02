@@ -2,10 +2,11 @@ package algafoodapi;
 
 import algafoodapi.notificacao.Notificador;
 import algafoodapi.notificacao.NotificadorEmail;
+import algafoodapi.service.AtivacaoClienteService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class AlgaConfig {
 
     @Bean
@@ -14,6 +15,10 @@ public class AlgaConfig {
         notificador.setCaixaAlta(true);
 
         return notificador;
+    }
+    @Bean
+    public AtivacaoClienteService ativacaoClienteService() {
+        return new AtivacaoClienteService(notificadorEmail());
     }
 
 }

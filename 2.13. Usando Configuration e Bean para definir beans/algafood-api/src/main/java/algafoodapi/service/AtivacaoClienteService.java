@@ -2,9 +2,7 @@ package algafoodapi.service;
 
 import algafoodapi.modelo.Cliente;
 import algafoodapi.notificacao.Notificador;
-import org.springframework.stereotype.Component;
 
-@Component
 public class AtivacaoClienteService {
 
     private Notificador notificador;
