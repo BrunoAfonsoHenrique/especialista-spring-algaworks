@@ -2,6 +2,7 @@ package com.algaworks.loja.venda;
 
 import com.algaworks.loja.pagamento.GatawayPagamento;
 import com.algaworks.loja.pagamento.PagSeguroService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -9,11 +10,17 @@ import java.math.BigDecimal;
 @Component
 public class VendaService {
 
+    @Autowired
     private GatawayPagamento gatawayPagamento;
 
-    public VendaService(GatawayPagamento gatawayPagamento) {
-        this.gatawayPagamento = gatawayPagamento;
-    }
+//    public VendaService(GatawayPagamento gatawayPagamento) {
+//        this.gatawayPagamento = gatawayPagamento;
+//    }
+
+//    @Autowired
+//    public void usarGatawayPagamento(GatawayPagamento gatawayPagamento) {
+//        this.gatawayPagamento = gatawayPagamento;
+//    }
 
     public void registrar(Venda venda, String numeroCartao) {
 
