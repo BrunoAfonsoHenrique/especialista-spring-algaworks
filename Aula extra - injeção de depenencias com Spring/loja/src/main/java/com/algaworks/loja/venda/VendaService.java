@@ -2,9 +2,11 @@ package com.algaworks.loja.venda;
 
 import com.algaworks.loja.pagamento.GatawayPagamento;
 import com.algaworks.loja.pagamento.PagSeguroService;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
 public class VendaService {
 
     private GatawayPagamento gatawayPagamento;

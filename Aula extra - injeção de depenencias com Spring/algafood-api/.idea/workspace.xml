@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ead6c0c2-d294-44c9-a603-f1f3b922f1b6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loja/src/main/java/com/algaworks/loja/LojaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../loja/src/main/java/com/algaworks/loja/LojaApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../loja/src/main/java/com/algaworks/loja/pagamento/PagSeguroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../loja/src/main/java/com/algaworks/loja/pagamento/PagSeguroService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../loja/src/main/java/com/algaworks/loja/venda/VendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../loja/src/main/java/com/algaworks/loja/venda/VendaService.java" afterDir="false" />
     </list>
