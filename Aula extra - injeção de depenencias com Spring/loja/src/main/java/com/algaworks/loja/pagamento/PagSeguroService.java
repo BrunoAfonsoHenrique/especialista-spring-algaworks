@@ -2,7 +2,7 @@ package com.algaworks.loja.pagamento;
 
 import java.math.BigDecimal;
 
-public class PagSeguroService {
+public class PagSeguroService implements GatawayPagamento {
 
     private String token;
 
@@ -10,6 +10,7 @@ public class PagSeguroService {
         this.token = token;
     }
 
+    @Override
     public void efetuarPagamento(String numeroCartao, BigDecimal valor) {
         System.out.printf("[PAGSEGURO] Usando token: %s \n", token);
         System.out.printf("[PAGSEGURO] Cobrando %f do cartão %s...\n", valor, numeroCartao);

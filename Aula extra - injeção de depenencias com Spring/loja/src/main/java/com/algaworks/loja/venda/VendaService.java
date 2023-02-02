@@ -1,10 +1,17 @@
 package com.algaworks.loja.venda;
 
+import com.algaworks.loja.pagamento.GatawayPagamento;
 import com.algaworks.loja.pagamento.PagSeguroService;
 
 import java.math.BigDecimal;
 
 public class VendaService {
+
+    private GatawayPagamento gatawayPagamento;
+
+    public VendaService(GatawayPagamento gatawayPagamento) {
+        this.gatawayPagamento = gatawayPagamento;
+    }
 
     public void registrar(Venda venda, String numeroCartao) {
 
@@ -13,7 +20,7 @@ public class VendaService {
         System.out.printf("[VENDA] Registrando venda de %s no valor total de %f... \n",
                 venda.getProduto(), valorTotal);
 
-        PagSeguroService pagSeguroService = new PagSeguroService("98654189478951498985");
-        pagSeguroService.efetuarPagamento(numeroCartao, valorTotal);
+//      PagSeguroService pagSeguroService = new PagSeguroService("98654189478951498985"); auto acoplamento
+        gatawayPagamento.efetuarPagamento(numeroCartao, valorTotal);
     }
 }
