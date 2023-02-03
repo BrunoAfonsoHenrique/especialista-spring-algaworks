@@ -5,19 +5,19 @@ import algafoodapi.notificacao.Notificador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AtivacaoClienteService {
 
-    @Autowired(required = false)
-    private Notificador notificador;
+    @Autowired
+    private List<Notificador> notificadores;
 
     public void ativar(Cliente cliente) {
         cliente.ativar();
 
-        if (notificador != null) {
+        for(Notificador notificador : notificadores) {
             notificador.notificar(cliente, "Seu cadastro no sistema esta ativo!");
-        } else {
-            System.out.printf("Não existe notificador, mas cliente foi ativado");
         }
 
     }
