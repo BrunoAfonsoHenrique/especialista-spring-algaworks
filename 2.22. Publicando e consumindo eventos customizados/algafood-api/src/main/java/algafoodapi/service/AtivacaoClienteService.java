@@ -5,24 +5,14 @@ import algafoodapi.notificacao.NivelUrgencia;
 import algafoodapi.notificacao.Notificador;
 import algafoodapi.notificacao.TipoDoNotificador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class AtivacaoClienteService {
 
     @TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
     @Autowired
     private Notificador notificador;
-
-//    @PostConstruct
-    public void init() {
-        System.out.println("INIT");
-    }
-
-//    @PreDestroy
-    public void destroy() {
-        System.out.println("DESTROY");
-    }
-
 
     public void ativar(Cliente cliente) {
         cliente.ativar();
