@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
@@ -18,5 +19,10 @@ public class CadastroCozinha {
         TypedQuery<Cozinha> query = manager.createQuery("from Cozinha", Cozinha.class);
 
         return query.getResultList();
+    }
+
+    @Transactional
+    public Cozinha adicionar(Cozinha cozinha) {
+        return manager.merge(cozinha);
     }
 }
