@@ -1,19 +1,17 @@
 package algafood.domain.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="tab_cozinha")
+//@Table(name="tab_cozinha")
 public class Cozinha {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="nome_cozinha")
+    //@Column(name="nome_cozinha")
     private String nome;
 
     public Long getId() {
