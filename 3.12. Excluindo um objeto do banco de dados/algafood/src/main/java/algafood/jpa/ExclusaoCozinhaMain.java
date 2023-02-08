@@ -16,11 +16,8 @@ public class ExclusaoCozinhaMain {
 
         Cozinha cozinha = new Cozinha();
         cozinha.setId(1L);
-        cozinha.setNome("Brasileira");
 
-
-        cadastroCozinha.salvar(cozinha);
-
+        cadastroCozinha.remover(cozinha);
 
     }
 }
