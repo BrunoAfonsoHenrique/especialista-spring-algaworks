@@ -4,6 +4,7 @@ import algafood.api.model.CozinhaXmlWrapper;
 import algafood.domain.model.Cozinha;
 import algafood.domain.respository.CozinhaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,10 +39,11 @@ public class CozinhaController {
           return ResponseEntity.notFound().build();
 
     }
-    
+
     @PostMapping
-    public void adicionar(@RequestBody Cozinha cozinha) {
-        cozinhaRepository.salvar(cozinha);
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cozinha adicionar(@RequestBody Cozinha cozinha) {
+        return cozinhaRepository.salvar(cozinha);
     }
 
 }
