@@ -37,6 +37,9 @@ public class CozinhaController {
             return ResponseEntity.ok(cozinha);
         }
 
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+          return ResponseEntity.notFound().build();
+
     }
 
 }
