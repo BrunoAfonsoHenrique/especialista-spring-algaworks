@@ -29,21 +29,9 @@ public class CozinhaController {
         return new CozinhaXmlWrapper(cozinhaRepository.listar());
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/{cozinhaId}")
-    public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
-        Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-
-//        return ResponseEntity.status(HttpStatus.OK).body(cozinha);
-//        return ResponseEntity.ok(cozinha);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.LOCATION, "http://api.algafood.local:8080/cozinhas");
-
-        return ResponseEntity
-                .status(HttpStatus.FOUND)
-                .headers(headers)
-                .build();
+    public Cozinha buscar(@PathVariable Long cozinhaId) {
+        return cozinhaRepository.buscar(cozinhaId);
 
     }
 
