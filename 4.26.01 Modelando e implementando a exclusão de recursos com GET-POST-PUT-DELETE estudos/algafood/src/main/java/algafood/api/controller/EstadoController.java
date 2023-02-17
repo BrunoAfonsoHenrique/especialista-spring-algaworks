@@ -65,5 +65,24 @@ public class EstadoController {
         return  ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @DeleteMapping("/estadoId")
+    public ResponseEntity<Estado> delete(@PathVariable Long estadoId) {
+
+        try {
+            Estado estado = estadoRepository.buscar(estadoId);
+
+            if(estado != null) {
+                estadoRepository.remover(estado);
+
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+
+    }
+
 
 }
