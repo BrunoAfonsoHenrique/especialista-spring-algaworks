@@ -1,6 +1,5 @@
 package algafood.api.controller;
 
-import algafood.api.model.CozinhaXmlWrapper;
 import algafood.domain.exceptions.EntidadeEmUsoException;
 import algafood.domain.exceptions.EntidadeNaoEncontradaException;
 import algafood.domain.model.Cozinha;
@@ -28,11 +27,6 @@ public class CozinhaController {
     @GetMapping()
     public List<Cozinha> listar() {
         return cozinhaRepository.listar();
-    }
-
-    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    public CozinhaXmlWrapper listarXml() {
-        return new CozinhaXmlWrapper(cozinhaRepository.listar());
     }
 
     @GetMapping("/{cozinhaId}")
