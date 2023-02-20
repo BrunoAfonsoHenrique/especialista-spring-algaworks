@@ -6,6 +6,7 @@ import algafood.domain.model.Restaurante;
 import algafood.domain.respository.CozinhaRepository;
 import algafood.domain.respository.RestauranteRepository;
 import algafood.domain.service.CadastroResturanteService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,6 +56,23 @@ public class RestauranteController {
                     .body(e.getMessage());
 
         }
+    }
+
+    @PutMapping("/{restauranteId}")
+    public ResponseEntity<Restaurante> alterar(@RequestBody Restaurante restaurante,
+                                               @PathVariable Long restauranteId) {
+
+        Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
+
+        if(restauranteAtual != null) {
+
+            BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
+
+            restauranteAtual = restauranteRepository.salvar(restauranteAtual);
+            return ResponseEntity.status(HttpStatus.OK).body(restauranteAtual);
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }
