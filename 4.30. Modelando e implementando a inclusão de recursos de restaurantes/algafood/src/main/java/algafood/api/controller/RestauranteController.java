@@ -1,6 +1,9 @@
 package algafood.api.controller;
 
+import algafood.domain.exceptions.EntidadeNaoEncontradaException;
+import algafood.domain.model.Cozinha;
 import algafood.domain.model.Restaurante;
+import algafood.domain.respository.CozinhaRepository;
 import algafood.domain.respository.RestauranteRepository;
 import algafood.domain.service.CadastroResturanteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,8 @@ public class RestauranteController {
 
     @Autowired
     CadastroResturanteService cadastroResturanteService;
+
+
 
     @GetMapping
     public List<Restaurante> listar() {
@@ -39,9 +44,16 @@ public class RestauranteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Restaurante adicionar(@RequestBody Restaurante restaurante) {
+    public ResponseEntity<Restaurante> adicionar(@RequestBody Restaurante restaurante) {
+        try {
+            restaurante = cadastroResturanteService.salvar(restaurante);
 
-        return cadastroResturanteService.salvar(restaurante);
+            return ResponseEntity.status(HttpStatus.CREATED).body(restaurante);
+        }
+        catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
+        }
     }
 
 }
