@@ -1,7 +1,10 @@
 package algafood.api.controller;
 
+import algafood.domain.exceptions.EntidadeEmUsoException;
+import algafood.domain.exceptions.EntidadeNaoEncontradaException;
 import algafood.domain.model.Estado;
 import algafood.domain.respository.EstadoRepository;
+import algafood.domain.service.CadastroEstadoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +20,9 @@ public class EstadoController {
     @Autowired
     EstadoRepository estadoRepository;
 
+    @Autowired
+    CadastroEstadoService cadastroEstadoService;
+
     @GetMapping
     public List<Estado> listar() {
         return estadoRepository.listar();
@@ -30,7 +36,7 @@ public class EstadoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Estado adicionar(@RequestBody Estado estado) {
-        return estadoRepository.salvar(estado);
+        return cadastroEstadoService.salvar(estado);
     }
 
     @PutMapping("/{estadoId}")
@@ -42,12 +48,29 @@ public class EstadoController {
         if(estadoAtual != null) {
             BeanUtils.copyProperties(estado, estadoAtual, "id");
 
-            estadoAtual = estadoRepository.salvar(estadoAtual);
+            estadoAtual = cadastroEstadoService.salvar(estadoAtual);
 
             return ResponseEntity.status(HttpStatus.OK).body(estadoAtual);
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @DeleteMapping("/{estadoId}")
+    public ResponseEntity<?> deletar(@PathVariable Long estadoId) {
+            try {
+                cadastroEstadoService.excluir(estadoId);
+
+                return ResponseEntity.status(HttpStatus.OK).build();
+            }
+            catch(EntidadeNaoEncontradaException e) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+            catch(EntidadeEmUsoException e) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+            }
+
+
     }
 
 }
