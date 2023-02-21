@@ -60,7 +60,7 @@ public class RestauranteController {
 
     @PutMapping("/{restauranteId}")
     public ResponseEntity<?> alterar(@RequestBody Restaurante restaurante,
-                                               @PathVariable Long restauranteId) {
+                                     @PathVariable Long restauranteId) {
 
         try {
             Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
