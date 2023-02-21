@@ -1,5 +1,6 @@
 package algafood.api.controller;
 
+import algafood.domain.exceptions.EntidadeEmUsoException;
 import algafood.domain.exceptions.EntidadeNaoEncontradaException;
 import algafood.domain.model.Cidade;
 import algafood.domain.respository.CidadeRepository;
@@ -47,6 +48,22 @@ public class CidadeController {
             return ResponseEntity.badRequest()
                     .body(e.getMessage());
         }
+    }
+
+    @DeleteMapping("/{cidadeId}")
+    public ResponseEntity<Cidade> remover(@PathVariable Long cidadeId) {
+        try {
+            cadastroCidadeService.excluir(cidadeId);
+
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+        catch(EntidadeNaoEncontradaException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        catch(EntidadeEmUsoException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+
     }
 
 }
