@@ -91,12 +91,16 @@ public class RestauranteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        campos.forEach((nomePropriedade, valorPropriedade) -> {
-            System.out.println(nomePropriedade + " = " + valorPropriedade);
-        });
+        merge(campos, restauranteAtual);
 
         return atualizar(restauranteAtual, restauranteId);
 
+    }
+
+    private static void merge(Map<String, Object> camposOrigem, Restaurante restauranteDestino) {
+        camposOrigem.forEach((nomePropriedade, valorPropriedade) -> {
+            System.out.println(nomePropriedade + " = " + valorPropriedade);
+        });
     }
 
 }
