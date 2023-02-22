@@ -18,6 +18,9 @@ public class CamisetasController {
     @Autowired
     CadastroCamisetaService cadastroCamisetaService;
 
+    @Autowired
+    CamisetaRepository camisetaRepository;
+
     @GetMapping
     public ResponseEntity<?> listarTodasCamisetas() {
         try {
@@ -44,4 +47,17 @@ public class CamisetasController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(camisetaNova);
     }
+
+    @PutMapping("/{camisetaId}")
+    public ResponseEntity<Camisetas> atualizarCamiseta(@PathVariable Long camisetaId,
+                                                       @RequestBody Camisetas camiseta) {
+
+        try {
+            Camisetas camisetaAtual = cadastroCamisetaService.atualizarCamiseta(camisetaId, camiseta);
+            return ResponseEntity.status(HttpStatus.OK).body(camisetaAtual);
+        } catch (CamisetaNaoEncontradaException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 }
