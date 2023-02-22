@@ -40,7 +40,7 @@ public class CamisetasRepositoryImpl implements CamisetaRepository {
         if(camisetas == null) {
             throw new EmptyResultDataAccessException(1);
         }
-        
+
         manager.remove(camisetas);
     }
 }

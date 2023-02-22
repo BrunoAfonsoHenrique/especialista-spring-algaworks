@@ -1,6 +1,8 @@
 package com.algaworks.loja.controller;
 
 import com.algaworks.loja.Exceptions.CamisetaNaoEncontradaException;
+import com.algaworks.loja.Exceptions.EntidadeEmUsoException;
+import com.algaworks.loja.Exceptions.EntidadeNaoEncontradaException;
 import com.algaworks.loja.domain.model.Camisetas;
 import com.algaworks.loja.repository.CamisetaRepository;
 import com.algaworks.loja.service.CadastroCamisetaService;
@@ -60,9 +62,20 @@ public class CamisetasController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<Camisetas> deletaarCamiseta() {
-        camisetaRepository.remover();
+    @DeleteMapping("/{camisetaId}")
+    public ResponseEntity<Camisetas> deletaarCamiseta(@PathVariable Long camisetaId) {
+        try {
+            cadastroCamisetaService.excluir(camisetaId);
+
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        catch(EntidadeNaoEncontradaException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        catch(EntidadeEmUsoException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+
     }
 
 
