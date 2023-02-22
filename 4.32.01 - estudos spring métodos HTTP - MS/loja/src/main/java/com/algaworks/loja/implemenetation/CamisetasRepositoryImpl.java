@@ -2,6 +2,7 @@ package com.algaworks.loja.implemenetation;
 
 import com.algaworks.loja.domain.model.Camisetas;
 import com.algaworks.loja.repository.CamisetaRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +36,11 @@ public class CamisetasRepositoryImpl implements CamisetaRepository {
     @Override
     public void remover(Long id) {
         Camisetas camisetas = buscar(id);
+
+        if(camisetas == null) {
+            throw new EmptyResultDataAccessException(1);
+        }
+        
         manager.remove(camisetas);
     }
 }

@@ -60,5 +60,10 @@ public class CamisetasController {
         }
     }
 
+    @DeleteMapping
+    public ResponseEntity<Camisetas> deletaarCamiseta() {
+        camisetaRepository.remover();
+    }
+
 
 }
