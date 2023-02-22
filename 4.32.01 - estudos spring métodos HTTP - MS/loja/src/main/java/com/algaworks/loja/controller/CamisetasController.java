@@ -49,15 +49,16 @@ public class CamisetasController {
     }
 
     @PutMapping("/{camisetaId}")
-    public ResponseEntity<Camisetas> atualizarCamiseta(@PathVariable Long camisetaId,
+    public ResponseEntity<?> atualizarCamiseta(@PathVariable Long camisetaId,
                                                        @RequestBody Camisetas camiseta) {
 
         try {
             Camisetas camisetaAtual = cadastroCamisetaService.atualizarCamiseta(camisetaId, camiseta);
             return ResponseEntity.status(HttpStatus.OK).body(camisetaAtual);
         } catch (CamisetaNaoEncontradaException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
 
 }
