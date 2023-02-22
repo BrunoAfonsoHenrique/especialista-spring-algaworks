@@ -34,6 +34,7 @@ public class CamisetasRepositoryImpl implements CamisetaRepository {
     }
 
     @Override
+    @Transactional
     public void remover(Long id) {
         Camisetas camisetas = buscar(id);
 
