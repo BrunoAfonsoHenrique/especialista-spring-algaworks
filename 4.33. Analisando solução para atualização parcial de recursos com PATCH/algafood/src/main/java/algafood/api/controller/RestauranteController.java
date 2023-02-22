@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/restaurantes")
@@ -57,7 +58,7 @@ public class RestauranteController {
     }
 
     @PutMapping("/{restauranteId}")
-    public ResponseEntity<?> alterar(@RequestBody Restaurante restaurante,
+    public ResponseEntity<?> atualizar(@RequestBody Restaurante restaurante,
                                      @PathVariable Long restauranteId) {
 
         try {
@@ -82,11 +83,19 @@ public class RestauranteController {
 
     @PatchMapping("/{restauranteId}")
     public ResponseEntity<?> atualizarParcialmente(@PathVariable Long restauranteId,
-                                                   @RequestBody Restaurante restaurante) {
+                                                   @RequestBody Map<String, Object> campos) {
 
-        System.out.println(restaurante);
+        Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
 
-        return ResponseEntity.ok().build();
+        if (restauranteAtual == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        campos.forEach((nomePropriedade, valorPropriedade) -> {
+            System.out.println(nomePropriedade + " = " + valorPropriedade);
+        });
+
+        return atualizar(restauranteAtual, restauranteId);
 
     }
 
