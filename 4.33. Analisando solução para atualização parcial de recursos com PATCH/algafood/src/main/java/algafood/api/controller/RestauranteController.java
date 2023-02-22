@@ -24,8 +24,6 @@ public class RestauranteController {
     @Autowired
     CadastroResturanteService cadastroResturanteService;
 
-
-
     @GetMapping
     public List<Restaurante> listar() {
         return restauranteRepository.listar();
@@ -79,6 +77,16 @@ public class RestauranteController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage());
         }
+
+    }
+
+    @PatchMapping("/{restauranteId}")
+    public ResponseEntity<?> atualizarParcialmente(@PathVariable Long restauranteId,
+                                                   @RequestBody Restaurante restaurante) {
+
+        System.out.println(restaurante);
+
+        return ResponseEntity.ok().build();
 
     }
 
