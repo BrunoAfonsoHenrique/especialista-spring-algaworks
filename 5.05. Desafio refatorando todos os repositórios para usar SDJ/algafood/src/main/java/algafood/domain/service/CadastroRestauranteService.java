@@ -8,18 +8,19 @@ import algafood.domain.respository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class CadastroResturanteService {
+public class CadastroRestauranteService {
 
     @Autowired
-    RestauranteRepository restauranteRepository;
+    private RestauranteRepository restauranteRepository;
 
     @Autowired
-    CozinhaRepository cozinhaRepository;
+    private CozinhaRepository cozinhaRepository;
 
     public Restaurante salvar(Restaurante restaurante) {
-
         Long cozinhaId = restaurante.getCozinha().getId();
+
         Cozinha cozinha = cozinhaRepository.findById(cozinhaId)
                 .orElseThrow(() -> new EntidadeNaoEncontradaException(
                         String.format("Não existe cadastro de cozinha com código %d", cozinhaId)));
@@ -28,6 +29,5 @@ public class CadastroResturanteService {
 
         return restauranteRepository.save(restaurante);
     }
-
 
 }
