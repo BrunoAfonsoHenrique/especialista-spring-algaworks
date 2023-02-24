@@ -1,0 +1,10 @@
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (1, 'Matrix', 1999, 'The Wachowskis', 'Ação/Ficção científica', '2h 16m', '16 anos');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (2, 'O Poderoso Chefão', 1972, 'Francis Ford Coppola', 'Drama/Crime', '2h 58m', '16 anos');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (3, 'Star Wars: Episódio IV - Uma Nova Esperança', 1977, 'George Lucas', 'Ação/Aventura', '2h 1m', 'Livre');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (4, 'O Senhor dos Anéis: A Sociedade do Anel', 2001, 'Peter Jackson', 'Fantasia/Aventura', '2h 58m', '12 anos');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (5, 'O Iluminado', 1980, 'Stanley Kubrick', 'Terror', '2h 26m', '18 anos');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (6, 'De Volta para o Futuro', 1985, 'Robert Zemeckis', 'Ação/Aventura', '1h 56m', 'Livre');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (7, 'Pulp Fiction', 1994, 'Quentin Tarantino', 'Drama/Crime', '2h 34m', '18 anos');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (8, 'Os Caçadores da Arca Perdida', 1981, 'Steven Spielberg', 'Ação/Aventura', '1h 55m', '10 anos');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (9, 'Forrest Gump: O Contador de Histórias', 1994, 'Robert Zemeckis', 'Comédia/Drama', 142, '12');
+insert into filme (id, nome, ano, diretor, genero, duracao, classificacao) values (10, 'O Resgate do Soldado Ryan', 1998, 'Steven Spielberg', 'Guerra/Drama', 169, '16');

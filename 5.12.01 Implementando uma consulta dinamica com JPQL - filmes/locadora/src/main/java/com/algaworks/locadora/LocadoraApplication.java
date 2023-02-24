@@ -1,4 +1,4 @@
-package com.algaworks.com.locadora;
+package com.algaworks.locadora;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

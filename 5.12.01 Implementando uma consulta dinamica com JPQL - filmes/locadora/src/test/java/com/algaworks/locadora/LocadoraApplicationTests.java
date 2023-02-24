@@ -1,4 +1,4 @@
-package com.algaworks.com.locadora;
+package com.algaworks.locadora;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
