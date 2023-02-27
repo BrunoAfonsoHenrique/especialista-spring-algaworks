@@ -57,4 +57,16 @@ public class FilmeController {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+    @DeleteMapping("/{filmeId}")
+    public ResponseEntity<Filme> delete(@PathVariable Long filmeId) {
+        try {
+            filmeRepository.remover(filmeId);
+
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
