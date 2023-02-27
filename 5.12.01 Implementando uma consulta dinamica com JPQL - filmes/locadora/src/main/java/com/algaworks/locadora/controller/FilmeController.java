@@ -3,6 +3,7 @@ package com.algaworks.locadora.controller;
 import com.algaworks.locadora.domain.exceptions.EntidadeNaoEncontradaException;
 import com.algaworks.locadora.domain.model.Filme;
 import com.algaworks.locadora.domain.repository.FilmeRepository;
+import com.algaworks.locadora.service.FilmeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class FilmeController {
 
     @Autowired
     FilmeRepository filmeRepository;
+
+    @Autowired
+    FilmeService filmeService;
 
     @GetMapping
     public List<Filme> listar() {
@@ -38,7 +42,7 @@ public class FilmeController {
     @ResponseStatus(HttpStatus.CREATED)
     public Filme adicionarNovoFilme(@RequestBody Filme filme) {
 
-        return filmeRepository.salvar(filme);
+        return filmeService.salvarFilme(filme);
     }
 
     @PutMapping("/{filmeId}")
@@ -61,9 +65,9 @@ public class FilmeController {
     @DeleteMapping("/{filmeId}")
     public ResponseEntity<Filme> delete(@PathVariable Long filmeId) {
         try {
-            filmeRepository.remover(filmeId);
+            filmeService.excluir(filmeId);
 
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            return ResponseEntity.status(HttpStatus.OK).build();
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
