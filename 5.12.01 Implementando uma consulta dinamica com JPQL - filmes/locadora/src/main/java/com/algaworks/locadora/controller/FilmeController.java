@@ -3,6 +3,7 @@ package com.algaworks.locadora.controller;
 import com.algaworks.locadora.domain.exceptions.EntidadeNaoEncontradaException;
 import com.algaworks.locadora.domain.model.Filme;
 import com.algaworks.locadora.domain.repository.FilmeRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +39,22 @@ public class FilmeController {
     public Filme adicionarNovoFilme(@RequestBody Filme filme) {
 
         return filmeRepository.salvar(filme);
+    }
+
+    @PutMapping("/{filmeId}")
+    public ResponseEntity<Filme> atualizar(@PathVariable Long filmeId,
+                                            @RequestBody Filme filme) {
+
+        Filme filmeAtual = filmeRepository.buscar(filmeId);
+
+        if(filmeAtual != null) {
+            BeanUtils.copyProperties(filme, filmeAtual, "id");
+
+            filmeAtual = filmeRepository.salvar(filmeAtual);
+
+            return ResponseEntity.status(HttpStatus.OK).body(filmeAtual);
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
