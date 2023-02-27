@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/filmes")
@@ -24,15 +25,15 @@ public class FilmeController {
 
     @GetMapping
     public List<Filme> listar() {
-        return filmeRepository.listar();
+        return filmeRepository.findAll();
     }
 
     @GetMapping("/{filmeId}")
     public ResponseEntity<Filme> buscarFilmePorId(@PathVariable Long filmeId) {
-        Filme filme = filmeRepository.buscar(filmeId);
+        Optional<Filme> filme = filmeRepository.findById(filmeId);
 
         if(filme != null) {
-            return ResponseEntity.status(HttpStatus.OK).body(filme);
+            return ResponseEntity.status(HttpStatus.OK).body(filme.get());
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
@@ -46,15 +47,15 @@ public class FilmeController {
     }
 
     @PutMapping("/{filmeId}")
-    public ResponseEntity<Filme> atualizar(@PathVariable Long filmeId,
+    public ResponseEntity<?> atualizar(@PathVariable Long filmeId,
                                             @RequestBody Filme filme) {
 
-        Filme filmeAtual = filmeRepository.buscar(filmeId);
+        Filme filmeAtual = filmeRepository.findById(filmeId).orElse(null);
 
         if(filmeAtual != null) {
             BeanUtils.copyProperties(filme, filmeAtual, "id");
 
-            filmeAtual = filmeRepository.salvar(filmeAtual);
+            filmeAtual = filmeRepository.save(filmeAtual);
 
             return ResponseEntity.status(HttpStatus.OK).body(filmeAtual);
         }

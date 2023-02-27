@@ -14,7 +14,7 @@ public class FilmeService {
     FilmeRepository filmeRepository;
 
     public Filme salvarFilme(Filme filme) {
-        Filme filmeSalvo = filmeRepository.salvar(filme);
+        Filme filmeSalvo = filmeRepository.save(filme);
 
         return filmeSalvo;
 
@@ -22,7 +22,7 @@ public class FilmeService {
 
     public void excluir(Long filmeId) {
         try {
-            filmeRepository.remover(filmeId);
+            filmeRepository.deleteById(filmeId);
         }
         catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(String.format("Filme de codigo %d não pode ser removido, " +
