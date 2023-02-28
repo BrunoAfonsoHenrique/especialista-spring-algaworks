@@ -76,4 +76,13 @@ public class TesteController {
         return restauranteRepository.find(nome, taxaFreteInicial, taxaFreteFinal);
     }
 
+    @GetMapping("/restaurantes/por-frete-gratis")
+    public List<Restaurante> restaurantesComFreteGratis(String nome) {
+
+        var comFreteGratis = new RestauranteComFreteGratisSpecification();
+        var comNomeSemelhante = new RestauranteComNomeSemelhanteEpecification();
+
+        return restauranteRepository.findAll(comFreteGratis.and(comNomeSemelhante));
+    }
+
 }
