@@ -22,32 +22,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
     @Override
     public List<Restaurante> find(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
 
-        StringBuilder jpql = new StringBuilder();
-        jpql.append("from Restaurante where 0 = 0 ");
-
-        Map<String, Object> parametros = new HashMap<String, Object>();
-
-        if (StringUtils.hasLength(nome)) { // hasLength verifica se não esta nulo e se não esta vazio(lengh > 0)
-            jpql.append("and nome like :nome ");
-            parametros.put("nome", "%" + nome + "%");
-        }
-
-        if (taxaFreteInicial != null) {
-            jpql.append("and taxaFrete >= :taxaInicial ");
-            parametros.put("taxaInicial", taxaFreteInicial);
-        }
-
-        if (taxaFreteFinal != null) {
-            jpql.append("and taxaFrete <= :taxaFinal ");
-            parametros.put("taxaFinal", taxaFreteFinal);
-        }
-
-        TypedQuery<Restaurante> query = manager
-                .createQuery(jpql.toString(), Restaurante.class);
-
-        parametros.forEach((chave, valor) -> query.setParameter(chave, valor));
-
-        return query.getResultList();
+        return manager.createQuery("from Restaurante", Restaurante.class).getResultList();
 
     }
 }
