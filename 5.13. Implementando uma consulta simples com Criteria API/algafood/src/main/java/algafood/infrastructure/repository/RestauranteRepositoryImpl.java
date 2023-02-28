@@ -3,15 +3,14 @@ package algafood.infrastructure.repository;
 import algafood.domain.model.Restaurante;
 import algafood.domain.respository.RestauranteRepositoryQueries;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
@@ -22,7 +21,16 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
     @Override
     public List<Restaurante> find(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
 
-        return manager.createQuery("from Restaurante", Restaurante.class).getResultList();
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+
+        // CriteriaQuery é uma interface por montar um estrutura de uma Query
+        CriteriaQuery<Restaurante> criteria = builder.createQuery(Restaurante.class);
+
+        criteria.from(Restaurante.class); // from Restaurante
+
+
+        TypedQuery<Restaurante> query = manager.createQuery(criteria);
+        return query.getResultList();
 
     }
 }
