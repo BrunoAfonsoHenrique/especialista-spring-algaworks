@@ -3,6 +3,7 @@ package algafood.infrastructure.repository;
 import algafood.domain.model.Restaurante;
 import algafood.domain.respository.RestauranteRepositoryQueries;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,10 +19,22 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
     @Override
     public List<Restaurante> find(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
 
-        String jpql = "from Restaurante where nome like :nome " +
-                "and taxaFrete between :taxaInicial and :taxaFinal";
+        var jpql = new StringBuilder();
+        jpql.append("from Restaurante where 0 = 0 ");
 
-        return manager.createQuery(jpql, Restaurante.class)
+        if (StringUtils.hasLength(nome)) { // hasLength verifica se não esta nulo e se não esta vazio(lengh > 0)
+            jpql.append("and nome like :nome ");
+        }
+
+        if (taxaFreteInicial != null) {
+            jpql.append("and taxaFrete >= :taxaInicial ");
+        }
+
+        if (taxaFreteFinal != null) {
+            jpql.append("and taxaFrete <= :taxaFinal ");
+        }
+
+        return manager.createQuery(jpql.toString(), Restaurante.class)
                 .setParameter("nome", "%" + nome + "%")
                 .setParameter("taxaInicial", taxaFreteInicial)
                 .setParameter("taxaFinal", taxaFreteFinal)
