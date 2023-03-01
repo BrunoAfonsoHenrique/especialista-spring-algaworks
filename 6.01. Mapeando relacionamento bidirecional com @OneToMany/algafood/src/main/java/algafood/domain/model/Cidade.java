@@ -1,4 +1,4 @@
-package com.algaworks.clinica.domain.model;
+package algafood.domain.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class CuidadorAnimal {
+public class Cidade {
 
     @EqualsAndHashCode.Include
     @Id
@@ -18,13 +18,9 @@ public class CuidadorAnimal {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
-    private Integer idade;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Estado estado;
 
-    @Column(nullable = false)
-    private String telefone;
-
-    @Column(nullable = false)
-    private String endereco;
 
 }

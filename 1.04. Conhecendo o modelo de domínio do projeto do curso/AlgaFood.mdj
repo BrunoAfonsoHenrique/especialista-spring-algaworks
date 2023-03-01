@@ -1726,7 +1726,6 @@
 									"model": {
 										"$ref": "AAAAAAFmZKeYHgcS3ug="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
 									"left": 753,
 									"top": 680,
@@ -1749,18 +1748,17 @@
 									"model": {
 										"$ref": "AAAAAAFmZKeYHgcTUBg="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 535,
+									"left": 664,
 									"top": 543,
 									"width": 79.853515625,
 									"height": 13,
-									"alpha": -1.4905574030213147,
-									"distance": 173.64907140552177,
+									"alpha": -1.2754271986132324,
+									"distance": 47.12748667179272,
 									"hostEdge": {
 										"$ref": "AAAAAAFmZKeYHwcVoMI="
 									},
-									"text": "-restaurantes"
+									"text": "-restaurante"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -9121,8 +9119,7 @@
 								"name": "pratos",
 								"reference": {
 									"$ref": "AAAAAAFmZKbpmgX7HYQ="
-								},
-								"navigable": false
+								}
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9151,8 +9148,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZKbpmgX7HYQ="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9182,8 +9178,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZKbpmgX7HYQ="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9213,8 +9208,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZKbpmgX7HYQ="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9335,8 +9329,7 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFmZLkSVBHk+/w="
-								},
-								"navigable": false
+								}
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9364,8 +9357,7 @@
 								"name": "endereco",
 								"reference": {
 									"$ref": "AAAAAAFmZLkSVBHk+/w="
-								},
-								"navigable": false
+								}
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9394,8 +9386,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZLkSVBHk+/w="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9476,8 +9467,7 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFmZLrCcxW92gY="
-								},
-								"navigable": false
+								}
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9507,8 +9497,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZLrCcxW92gY="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9537,8 +9526,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZLrCcxW92gY="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9567,8 +9555,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZLrCcxW92gY="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9597,8 +9584,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZLrCcxW92gY="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9709,8 +9695,7 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFmZLxrwxiZ0mA="
-								},
-								"navigable": false
+								}
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9738,8 +9723,7 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFmZLxrwxiZ0mA="
-								},
-								"navigable": false
+								}
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9854,8 +9838,7 @@
 								"reference": {
 									"$ref": "AAAAAAFmZL1UAx43sRA="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -9998,8 +9981,7 @@
 								"reference": {
 									"$ref": "AAAAAAFnn6AA9ndyuSg="
 								},
-								"visibility": "private",
-								"navigable": false
+								"visibility": "private"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -10136,8 +10118,7 @@
 										"reference": {
 											"$ref": "AAAAAAFno7z0sBedvzk="
 										},
-										"visibility": "private",
-										"navigable": false
+										"visibility": "private"
 									},
 									"end2": {
 										"_type": "UMLAssociationEnd",
@@ -10219,7 +10200,7 @@
 											"$ref": "AAAAAAFmZKbpmgX7HYQ="
 										},
 										"visibility": "private",
-										"navigable": false
+										"multiplicity": "0..*"
 									},
 									"end2": {
 										"_type": "UMLAssociationEnd",
@@ -10227,6 +10208,7 @@
 										"_parent": {
 											"$ref": "AAAAAAFmZKeYHgcRFQ8="
 										},
+										"name": "restaurante",
 										"reference": {
 											"$ref": "AAAAAAFmZKcrOQZRZTk="
 										},
@@ -10464,8 +10446,7 @@
 										"reference": {
 											"$ref": "AAAAAAFnwzY8boKiU80="
 										},
-										"visibility": "private",
-										"navigable": false
+										"visibility": "private"
 									},
 									"end2": {
 										"_type": "UMLAssociationEnd",
