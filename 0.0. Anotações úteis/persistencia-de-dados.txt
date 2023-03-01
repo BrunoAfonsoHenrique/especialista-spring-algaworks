@@ -1,0 +1,9 @@
+Consultas no banco de dados (Spring) - formas de consultar
+* QueryMetods
+* Query nomeada @Query em cima do método
+* Externalizar consulta JPQL para um arquivo ORN.XML
+* Repositório customizado usando JPQL
+* Respositório customizado usanod Criteria API
+* Padrao Specifications (DDD) com SDJ
+
+
