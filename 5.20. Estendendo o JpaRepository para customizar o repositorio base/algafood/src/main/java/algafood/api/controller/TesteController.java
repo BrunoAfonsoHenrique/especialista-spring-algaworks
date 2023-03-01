@@ -44,6 +44,11 @@ public class TesteController {
         return cozinhaRepository.existsByNome(nome);
     }
 
+    @GetMapping("/cozinhas/primeiro")
+    public Optional<Restaurante> cozinhaPrimeiro(String nome) {
+        return restauranteRepository.buscarPrimeiro();
+    }
+
 
     //Restaurantes
     @GetMapping("/restaurantes/por-taxa-frete")
