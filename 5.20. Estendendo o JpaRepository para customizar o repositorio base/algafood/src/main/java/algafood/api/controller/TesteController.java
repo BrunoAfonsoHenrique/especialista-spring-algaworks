@@ -45,8 +45,8 @@ public class TesteController {
     }
 
     @GetMapping("/cozinhas/primeiro")
-    public Optional<Restaurante> cozinhaPrimeiro(String nome) {
-        return restauranteRepository.buscarPrimeiro();
+    public Optional<Cozinha> cozinhaPrimeiro(String nome) {
+        return cozinhaRepository.buscarPrimeiro();
     }
 
 
