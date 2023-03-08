@@ -38,10 +38,12 @@ public class Restaurante {
     @Embedded
     private Endereco endereco;
 
+    @JsonIgnore
     @CreationTimestamp // hibernate
     @Column(nullable = false, columnDefinition = "datetime")
     private LocalDateTime dataCadastro;
 
+    @JsonIgnore
     @UpdateTimestamp // hibernate
     @Column(nullable = false, columnDefinition = "datetime")
     private LocalDateTime dataAtualizacao;
