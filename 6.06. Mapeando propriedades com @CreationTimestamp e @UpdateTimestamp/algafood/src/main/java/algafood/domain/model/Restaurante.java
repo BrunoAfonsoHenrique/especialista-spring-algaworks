@@ -3,6 +3,8 @@ package algafood.domain.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -36,8 +38,12 @@ public class Restaurante {
     @Embedded
     private Endereco endereco;
 
+    @CreationTimestamp // hibernate
+    @Column(nullable = false)
     private LocalDateTime dataCadastro;
 
+    @UpdateTimestamp // hibernate
+    @Column(nullable = false)
     private LocalDateTime dataAtualizacao;
 
     @JsonIgnore
