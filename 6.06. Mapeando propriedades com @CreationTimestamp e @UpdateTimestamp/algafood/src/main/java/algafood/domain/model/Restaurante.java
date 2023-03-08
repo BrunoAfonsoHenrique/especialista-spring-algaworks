@@ -39,11 +39,11 @@ public class Restaurante {
     private Endereco endereco;
 
     @CreationTimestamp // hibernate
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "datetime")
     private LocalDateTime dataCadastro;
 
     @UpdateTimestamp // hibernate
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "datetime")
     private LocalDateTime dataAtualizacao;
 
     @JsonIgnore
