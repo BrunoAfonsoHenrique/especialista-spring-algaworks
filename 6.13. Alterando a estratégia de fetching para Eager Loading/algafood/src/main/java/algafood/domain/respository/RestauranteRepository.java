@@ -3,6 +3,7 @@ package algafood.domain.respository;
 import algafood.domain.model.Restaurante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,9 @@ import java.util.Optional;
 @Repository
 public interface RestauranteRepository extends CustomJpaRepository<Restaurante, Long> , RestauranteRepositoryQueries,
         JpaSpecificationExecutor<Restaurante> {
+
+    @Query("from Restaurante r join r.cozinha join r.formasPagamento")
+    List<Restaurante> findAll();
 
     List<Restaurante> queryByTaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
 
